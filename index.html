@@ -279,11 +279,6 @@ dialog::backdrop { background: #003366b0; }
 .hero-inner { z-index: 2; }
 @media (max-width:540px) { .hero-photo { object-position: 64% center; } .hero::after { background: linear-gradient(90deg,#003366ed,#00336699 65%,#00336655); } }
 
-.programme-option { margin-top: 14px; border: 1px solid #c5dcf0; border-radius: 9px; background: #f4f9fd; }
-.programme-option label { display: flex; align-items: flex-start; gap: 10px; padding: 13px; cursor: pointer; }
-.programme-option input { margin: 3px 0 0; width: 18px; height: 18px; flex: 0 0 18px; accent-color: #0047ab; }
-.programme-option strong { display: block; font-size: 13px; }
-.programme-option small { display: block; color: var(--muted); font-size: 12px; margin-top: 4px; }
 .cost-detail { color: #e6e9ed; font-size: 12px; margin-top: 12px; }
 .preset-label { min-width: 44px; color: var(--muted); font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: .075em; }
 .value-wrap { margin-top: -6px; }
@@ -300,7 +295,7 @@ h3, .plan-name, .benefit-name, .row-total, .comparison-label strong, .stepper in
 .mobile-summary strong, .assumption-field label { font-weight: 600; }
 .plan-price small, .brand-light { font-weight: 500; }
 .eyebrow, .header-link, .text-button, .preset, .usage-columns, .live-marker, .primary-button, .preset-label,
-.method-foot a, .network-summary p, .programme-option strong, .custom-fee, .model-notes li strong, .preset-label { font-weight: 600; }
+.method-foot a, .network-summary p, .custom-fee, .model-notes li strong, .preset-label { font-weight: 600; }
 .brand { letter-spacing: -.025em; }
 h1 { font-size: clamp(44px, 5.4vw, 78px); letter-spacing: -.03em; line-height: 1; }
 h2 { letter-spacing: -.02em; }
@@ -345,9 +340,6 @@ h1, h2, h3 { color: inherit; }
           <div id="billing-field" class="billing-field">
             <label for="billing">Founding Member payment schedule</label>
             <select id="billing"><option value="annual">€900 paid annually · proposed</option><option value="quarterly">€400 each quarter · €1,600 over a full year · proposed</option></select>
-          </div>
-          <div id="programme-field" class="programme-option" hidden>
-            <label for="add-programme"><input type="checkbox" id="add-programme"><span><strong>Add one Programme · €1,200</strong><small>A Sprint, a course and online events. Added to the €1,200 annual membership. Total with one Programme is €2,400.</small></span></label>
           </div>
           <p class="offer-note" id="offer-note"></p>
           <div class="custom-fee" id="custom-fee-field" hidden>
@@ -426,7 +418,7 @@ h1, h2, h3 { color: inherit; }
           </div>
           <div>
             <h3>Value compared with cost</h3>
-            <p>Subtract the total annual cost, including a selected Programme, from the estimated value. Divide the difference by that cost and multiply by 100. The percentage compares your estimated benefit value with the fee. It leaves out your time and any commercial result, so treat it as a value-to-fee comparison. A zero cost gives a net value only.</p>
+            <p>Subtract the total annual cost, including any Programmes, from the estimated value. Divide the difference by that cost and multiply by 100. The percentage compares your estimated benefit value with the fee. It leaves out your time and any commercial result, so treat it as a value-to-fee comparison. A zero cost gives a net value only.</p>
           </div>
           <div>
             <h3>What to count</h3>
@@ -435,7 +427,7 @@ h1, h2, h3 { color: inherit; }
         </div>
         <div class="model-notes">
           <h3>Standard and cautious values</h3>
-          <p>The standard values are one illustrative scenario. The cautious values lower the assumptions with the least market support: network access €300 a year, general webinars €25, archive results €10, and Task Force sessions €0 until you identify a specific benefit. Sprint, Challenge and Programme values stay the same. With higher fees or light use, the result can turn negative, and the calculator shows it that way.</p>
+          <p>The calculator opens with cautious values and light use, so the first result is a conservative one. The cautious values lower the assumptions with the least market support: network access €300 a year, general webinars €25, archive results €10, and Task Force sessions €0 until you identify a specific benefit. The standard values are a more generous illustrative scenario. Sprint, Challenge and Programme values are the same in both. When estimated value falls short of the fee, the calculator shows a negative result.</p>
           <h3>What the peer network is worth to you</h3>
           <p>The €600 standard value equals €50 a month. As an illustration, saving six hours a year in finding relevant expertise, at €100 an hour, would cover it. Use your own hours and hourly cost. The value depends on reaching relevant people who respond, share candid experience and connect you across companies and functions. Admission screening on its own adds little. Set access to €0 if you would not pay for it.</p>
           <p>The member mix is the practical reason. A supplier’s commercial director, a customer-side procurement lead and a sustainment manager can each show a different consequence of the same contractual decision. The €600 holds when you can reach those perspectives and use them.</p>
@@ -445,14 +437,14 @@ h1, h2, h3 { color: inherit; }
           <h3>How the other starting values were set</h3>
           <ul>
             <li><strong>Sprint, €900:</strong> nine hours of facilitated work on members’ own cases, or €100 an hour. That sits within published individual prices for specialist professional courses. Employer group packages can cost less per person.</li>
-            <li><strong>Programme, €1,200:</strong> the 2028 add-on price, covering a Sprint, a course and online events. Count it only when you buy one.</li>
+            <li><strong>Programme, €1,200 each:</strong> the 2028 add-on price for a Sprint, a course and online events. Members from 2028 can add up to four a year. Each one adds €1,200 to your cost, so add only the Programmes you will follow.</li>
             <li><strong>Live Challenge, €150:</strong> at the lower end of published hourly rates for individual coaching. A peer response differs in scope from a contracted coach, so count it only when you receive a useful result.</li>
             <li><strong>Task Force, €100 a session:</strong> count learning, feedback or a usable result you receive. Your own contribution to building a method is time you give, so it carries no value here.</li>
             <li><strong>Expert session, €50:</strong> suits an interactive specialist session with room for questions. Use €25 or less for a general briefing or a recording.</li>
             <li><strong>Archive result, €40:</strong> equals about thirty minutes saved at €80 an hour. Enter a lower value if a resource saves you less time.</li>
           </ul>
           <h3>Membership model used</h3>
-          <p>The 2027 entry year includes one Sprint; later seats depend on availability, with Founding Circle priority. From 2028, one Programme is an optional €1,200 purchase on top of membership. It includes a Sprint, a course and online events, and its value counts only when selected. ExecFrontline PRO is included for the founding groups, with its contents still being defined, so it carries €0 in this model.</p>
+          <p>The 2027 entry year includes one Sprint; later seats depend on availability, with Founding Circle priority. From 2028, members can add one to four Programmes a year at €1,200 each, on top of membership. Each includes a Sprint, a course and online events, and counts only when added. ExecFrontline PRO is included for the founding groups, with its contents still being defined, so it carries €0 in this model.</p>
           <p>Every benefit value here is an editable planning assumption. Task Force and event quantities depend on what is available. The 48-hour Challenge response is a target under validation. Founding Circle renewal is intended to rise with inflation only. Other fees apply to a stated year. Member feedback on help received, time saved and outputs used will show how well these assumptions hold.</p>
         </div>
         <p class="method-foot">Illustrative value estimate, updated 18 November 2026. This compares the estimated value of benefits with membership cost. It excludes your time, possible contract wins and other uncertain outcomes. Future membership terms and availability may change. <a href="https://www.execfrontline.com/execfrontline-answer-hub">Explore what’s included <span class="arrow-up" aria-hidden="true"></span></a></p>
@@ -483,7 +475,7 @@ h1, h2, h3 { color: inherit; }
       </div>
       <div id="assumption-fields"></div>
       <div class="dialog-footer">
-        <button type="button" class="text-button" id="reset-values">Restore standard values</button>
+        <button type="button" class="text-button" id="reset-values">Restore starting values</button>
         <button class="primary-button" value="done">Done</button>
       </div>
     </form>
@@ -504,7 +496,6 @@ function isShown(id, state) {
 }
 
 function isAvailable(id, state) {
-  if (id === "programme") return state.plan === "standard" && state.programme === true;
   return isShown(id, state);
 }
 
@@ -518,7 +509,7 @@ const plans = {
 const benefits = [
   { id: "network", name: "Vetted peer network", description: "A year of access to peers across buyers, suppliers, programme teams and investors, with admission through an application and call.", unit: "year of access", limit: 1, value: 600, icon: "community" },
   { id: "sprint", name: "Your Sprint", description: "Six 90-minute sessions working members’ cases. Included in the first year of 2027 entry offers. From 2028, the Sprint comes within a Programme.", unit: "Sprint", limit: 1, value: 900, icon: "sprint" },
-  { id: "programme", name: "Programme", description: "A Sprint, a course and online events, bought as a €1,200 add-on to 2028 membership. Tick Add one Programme above to count it. Leave its online events out of the Expert sessions row.", unit: "Programme", limit: 1, value: 1200, icon: "course" },
+  { id: "programme", name: "Programme", description: "A Sprint, a course and online events, €1,200 each on top of the €1,200 membership. Add up to four a year: each one adds its fee to your cost and its value here. Leave its online events out of Expert sessions.", unit: "Programme", limit: 4, value: 1200, icon: "course" },
   { id: "challenges", name: "Live Challenges", description: "A distinct live problem worked by peers. Count it when you receive usable analysis or next steps. The 48-hour peer response is a delivery target being tested.", unit: "problem worked", limit: 24, value: 150, icon: "sessions" },
   { id: "taskforces", name: "Task Force participation", description: "Sessions building a method, tool or solution with members. Count only what you gain: learning, feedback or a usable result.", unit: "working session", limit: 24, value: 100, icon: "networking" },
   { id: "events", name: "Expert sessions & webinars", description: "Member events, workshops or practitioner briefings outside Sprints, Programmes and Task Forces. Value a general briefing lower than an interactive specialist session.", unit: "event", limit: 24, value: 50, icon: "briefings" },
@@ -527,9 +518,10 @@ const benefits = [
 ];
 
 const presets = {
-  light: { name: "Light use", counts: [1, 0, 1, 1, 0, 2, 2, 2] },
-  regular: { name: "Regular use", counts: [1, 1, 1, 3, 2, 4, 4, 6] },
-  high: { name: "High use", counts: [1, 1, 1, 6, 4, 8, 8, 12] },
+  // null: the number of Programmes is a purchase choice, so usage scenarios leave it unchanged.
+  light: { name: "Light use", counts: [1, 0, null, 1, 0, 2, 2, 2] },
+  regular: { name: "Regular use", counts: [1, 1, null, 3, 2, 4, 4, 6] },
+  high: { name: "High use", counts: [1, 1, null, 6, 4, 8, 8, 12] },
 };
 
 const valueSets = {
@@ -548,10 +540,9 @@ function startingState() {
   return {
     plan: "founding",
     billing: "annual",
-    programme: false,
     customFee: null,
-    counts: Object.fromEntries(benefits.map(({ id }, index) => [id, presets.regular.counts[index]])),
-    rates: Object.fromEntries(benefits.map(({ id, value }) => [id, value])),
+    counts: Object.fromEntries(benefits.map(({ id }, index) => [id, presets.light.counts[index] ?? 0])),
+    rates: { ...valueSets.cautious.rates },
   };
 }
 
@@ -565,7 +556,6 @@ function restoreState(saved) {
   const state = startingState();
   if (!saved || typeof saved !== "object") return startingStateChecked();
   if (Object.hasOwn(plans, saved.plan)) state.plan = saved.plan;
-  state.programme = saved.programme === true;
   if (saved.billing === "quarterly") state.billing = "quarterly";
   if (typeof saved.customFee === "number") state.customFee = cleanNumber(saved.customFee, MAX_MONEY, 2);
   for (const { id, limit } of benefits) {
@@ -578,13 +568,14 @@ function restoreState(saved) {
 
 function applyPreset(state, preset) {
   benefits.forEach(({ id }, index) => {
-    state.counts[id] = !isAvailable(id, state) ? 0 : presets[preset].counts[index];
+    const count = presets[preset].counts[index];
+    state.counts[id] = !isAvailable(id, state) ? 0 : count === null ? state.counts[id] : count;
   });
 }
 
 function selectedPreset(state) {
   return Object.keys(presets).find((key) =>
-    benefits.every(({ id }, index) => state.counts[id] === (!isAvailable(id, state) ? 0 : presets[key].counts[index]))
+    benefits.every(({ id }, index) => presets[key].counts[index] === null || state.counts[id] === (!isAvailable(id, state) ? 0 : presets[key].counts[index]))
   );
 }
 
@@ -594,7 +585,7 @@ function selectedValueSet(state) {
 
 function calculate(state) {
   const membershipCost = state.plan === "custom" ? state.customFee : state.plan === "founding" && state.billing === "quarterly" ? 1600 : plans[state.plan].fee;
-  const programmeCost = state.plan === "standard" && state.programme ? PROGRAMME_FEE : 0;
+  const programmeCost = state.plan === "standard" ? state.counts.programme * PROGRAMME_FEE : 0;
   const cost = membershipCost === null ? null : membershipCost + programmeCost;
   const amounts = Object.fromEntries(benefits.map(({ id }) => [id, (!isAvailable(id, state) ? 0 : state.counts[id]) * Math.round(state.rates[id] * 100)]));
   const value = Object.values(amounts).reduce((sum, cents) => sum + cents, 0);
@@ -616,7 +607,7 @@ const byId = (id) => document.getElementById(id);
 const query = (selector) => document.querySelector(selector);
 const euro = new Intl.NumberFormat("en-IE", { style: "currency", currency: "EUR", minimumFractionDigits: 0, maximumFractionDigits: 2 });
 const percent = new Intl.NumberFormat("en-IE", { maximumFractionDigits: 1 });
-const storageKey = "execfrontline-membership-roi-v3";
+const storageKey = "execfrontline-membership-roi-v4";
 const icons = {
   community: "⌂", sessions: "✦", briefings: "◉", course: "▤", networking: "◇",
   resources: "▧", sprint: "↗", sliders: "☷", reset: "↶", target: "◎", info: "ⓘ", close: "×",
@@ -668,9 +659,9 @@ function networkNote() {
   const standard = valueSets.standard.rates.network;
   const cautious = valueSets.cautious.rates.network;
   if (state.counts.network === 0) return "Not included: access is set to 0 in the table above.";
-  if (rate === standard) return "Included in the annual estimate at the standard starting value of " + money(standard) + " a year. Change it under Edit values.";
-  if (rate === cautious) return "Included in the annual estimate at the cautious starting value of " + money(cautious) + " a year. The standard value is " + money(standard) + ".";
-  return "Included in the annual estimate at your value of " + money(rate) + " a year. The standard starting value is " + money(standard) + ".";
+  if (rate === cautious) return "Included in the annual estimate at the cautious starting value of " + money(cautious) + " a year. The standard value is " + money(standard) + ". Change it under Edit values.";
+  if (rate === standard) return "Included in the annual estimate at the standard value of " + money(standard) + " a year. The cautious starting value is " + money(cautious) + ".";
+  return "Included in the annual estimate at your value of " + money(rate) + " a year. Starting values: " + money(cautious) + " cautious, " + money(standard) + " standard.";
 }
 
 function fillMarkup() {
@@ -717,7 +708,7 @@ function fillMarkup() {
     </div>`).join("");
 
   byId("assumption-fields").innerHTML = benefits.map((benefit) => `
-    <div class="assumption-field">
+    <div class="assumption-field" id="field-${benefit.id}">
       <div>
         <label for="rate-${benefit.id}">${benefit.name}</label>
         <small>Value per ${benefit.unit}</small>
@@ -733,7 +724,6 @@ function syncInputs() {
   query(`[name="plan"][value="${state.plan}"]`).checked = true;
   customFee.value = state.customFee ?? "";
   byId("billing").value = state.billing;
-  byId("add-programme").checked = state.programme;
   for (const { id } of benefits) {
     byId("count-" + id).value = state.counts[id];
     byId("rate-" + id).value = state.rates[id];
@@ -746,13 +736,17 @@ function updateUI() {
   byId("custom-fee-field").hidden = state.plan !== "custom";
   query('[name="plan"][value="founding"]').nextElementSibling.querySelector(".plan-price").textContent =
     state.billing === "quarterly" ? "€1,600 / full year" : "€900 / year";
-  byId("programme-field").hidden = state.plan !== "standard";
   query(".roi-caption").textContent = result.programmeCost > 0 ? "Estimated value compared with membership and Programme cost" : "Estimated value compared with membership fee";
   byId("cost-detail").hidden = state.plan !== "standard";
-  byId("cost-detail").textContent = "Membership " + money(result.membershipCost ?? 0) + " + Programme " + money(result.programmeCost);
+  const programmes = state.counts.programme;
+  byId("cost-detail").textContent = programmes === 0
+    ? "Membership " + money(result.membershipCost ?? 0) + ". No Programmes added."
+    : "Membership " + money(result.membershipCost ?? 0) + " + " + programmes + (programmes === 1 ? " Programme " : " Programmes ") + money(result.programmeCost);
   byId("billing-field").hidden = state.plan !== "founding";
   byId("offer-note").textContent = state.plan === "standard"
-    ? state.programme ? "2028 membership €1,200 plus one Programme €1,200. Total annual cost €2,400. The Programme includes a Sprint, a course and online events." : "2028 membership €1,200. Add a Programme below to include a Sprint, a course and online events."
+    ? programmes === 0
+      ? "2028 membership €1,200. Add one to four Programmes under Plan your annual use, at €1,200 each. Each includes a Sprint, a course and online events."
+      : "2028 membership €1,200 plus " + (programmes === 1 ? "one Programme at €1,200" : programmes + " Programmes at €1,200 each") + ". Total annual cost " + money(result.cost) + "."
     : state.plan === "circle"
     ? "First membership year only. The €150 commitment fee is waived. Future renewal is intended to rise with inflation only."
     : state.plan === "founding"
@@ -770,6 +764,7 @@ function updateUI() {
   }
   for (const { id, unit, limit: baseLimit, name } of benefits) {
     byId("row-" + id).hidden = !isShown(id, state);
+    byId("field-" + id).hidden = !isShown(id, state);
     const limit = !isAvailable(id, state) ? 0 : baseLimit;
     byId("count-" + id).max = limit;
     const rate = money(state.rates[id]);
@@ -829,13 +824,6 @@ byId("plan-options").addEventListener("change", (event) => {
   updateUI();
 });
 
-byId("add-programme").addEventListener("change", (event) => {
-  state.programme = event.target.checked;
-  state.counts.programme = state.programme ? 1 : 0;
-  syncInputs();
-  updateUI();
-});
-
 byId("billing").addEventListener("change", (event) => {
   state.billing = event.target.value;
   updateUI();
@@ -882,7 +870,7 @@ byId("value-sets").addEventListener("click", (event) => {
 });
 
 byId("reset-values").addEventListener("click", () => {
-  state.rates = { ...valueSets.standard.rates };
+  state.rates = { ...valueSets.cautious.rates };
   syncInputs();
   updateUI();
 });
