@@ -1,0 +1,14 @@
+# Windows and Mac system files
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# Vercel CLI settings (only if you ever use it)
+.vercel
+
+# Secrets and local settings
+.env
+.env.*
+
+# Editor settings
+.vscode/
