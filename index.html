@@ -75,7 +75,7 @@ h1 span { color: #89cff0; }
 .plan-panel, .usage-panel { padding: 23px 24px 18px; }
 h2 { font-size: 23px; font-weight: 800; letter-spacing: -.038em; line-height: 1.23; }
 .section-copy { font-size: 13px; color: var(--muted); margin-top: 5px; }
-.plan-options { margin: 16px 0 0; padding: 0; border: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
+.plan-options { margin: 16px 0 0; padding: 0; border: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 9px; }
 .plan-option { display: block; position: relative; min-width: 0; cursor: pointer; }
 .plan-option input { position: absolute; opacity: 0; width: 1px; height: 1px; }
 .plan-card { display: grid; grid-template-columns: minmax(0, 1fr) 13px; column-gap: 4px; row-gap: 1px; align-items: baseline; min-height: 97px; padding: 11px 10px 9px; height: 100%; border: 1px solid #d9dfe6; border-radius: 9px; background: #fff; }
@@ -266,7 +266,8 @@ dialog::backdrop { background: #003366b0; }
 .model-notes h3 { font-size: 14px; margin-top: 12px; }
 .model-notes p { font-size: 12px; color: var(--muted); margin-top: 6px; max-width: 100ch; }
 @media (max-width: 540px) {
- .plan-options { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+ .plan-options { grid-template-columns: minmax(0, 1fr); }
+ .plan-card { min-height: 0; }
  .plan-price { font-size: 21px; }
  .plan-name { font-size: 12px; }
  .plan-detail { font-size: 10px; }
@@ -444,8 +445,8 @@ h1, h2, h3 { color: inherit; }
             <li><strong>Archive result, €30 cautious or €40 standard:</strong> about thirty minutes saved at €60 or €80 an hour. Enter a lower value if a resource saves you less time.</li>
           </ul>
           <h3>Membership model used</h3>
-          <p>The 2027 entry year includes one Sprint; later seats depend on availability, with Founding Circle priority. From 2028, members can add one to four Programmes a year at €1,200 each, on top of membership. Each includes a Sprint, a course and online events, and counts only when added. ExecFrontline PRO is included for the founding groups, with its contents still being defined, so it carries €0 in this model.</p>
-          <p>Every benefit value here is an editable planning assumption. Task Force and event quantities depend on what is available. The 48-hour Challenge response is a target under validation. Founding Circle renewal is intended to rise with inflation only. Other fees apply to a stated year. Member feedback on help received, time saved and outputs used will show how well these assumptions hold.</p>
+          <p>The 2027 entry year includes one Sprint; later seats depend on availability. From 2028, members can add one to four Programmes a year at €1,200 each, on top of membership. Each includes a Sprint, a course and online events, and counts only when added. ExecFrontline PRO is included for Founding Members, with its contents still being defined, so it carries €0 in this model.</p>
+          <p>Every benefit value here is an editable planning assumption. Task Force and event quantities depend on what is available. The 48-hour Challenge response is a target under validation. Other fees apply to a stated year. Member feedback on help received, time saved and outputs used will show how well these assumptions hold.</p>
         </div>
         <p class="method-foot">Illustrative value estimate, updated 18 November 2026. This compares the estimated value of benefits with membership cost. It excludes your time, possible contract wins and other uncertain outcomes. Future membership terms and availability may change. <a href="https://www.execfrontline.com/execfrontline-answer-hub">Explore what’s included <span class="arrow-up" aria-hidden="true"></span></a></p>
       </section>
@@ -500,7 +501,6 @@ function isAvailable(id, state) {
 }
 
 const plans = {
-  circle: { name: "Founding Circle", fee: 600, detail: "First year · due 2 Feb 2027" },
   founding: { name: "Founding Member 2027", fee: 900, detail: "Proposed · set 18 Dec 2026" },
   standard: { name: "Member from 2028", fee: 1200, detail: "Proposed · membership only" },
   custom: { name: "Your confirmed offer", fee: null, detail: "Enter the fee quoted to you" },
@@ -519,7 +519,7 @@ const benefits = [
 
 const presets = {
   // null: the number of Programmes is a purchase choice, so usage scenarios leave it unchanged.
-  light: { name: "Light use", counts: [1, 0, null, 1, 0, 2, 2, 2] },
+  light: { name: "Light use", counts: [1, 1, null, 1, 0, 2, 2, 2] },
   regular: { name: "Regular use", counts: [1, 1, null, 3, 2, 4, 4, 6] },
   high: { name: "High use", counts: [1, 1, null, 6, 4, 8, 8, 12] },
 };
@@ -541,7 +541,7 @@ function startingState() {
     plan: "founding",
     billing: "annual",
     customFee: null,
-    counts: Object.fromEntries(benefits.map(({ id }, index) => [id, presets.light.counts[index] ?? 0])),
+    counts: Object.fromEntries(benefits.map(({ id }, index) => [id, presets.light.counts[index] ?? 1])),
     rates: { ...valueSets.cautious.rates },
   };
 }
@@ -607,7 +607,7 @@ const byId = (id) => document.getElementById(id);
 const query = (selector) => document.querySelector(selector);
 const euro = new Intl.NumberFormat("en-IE", { style: "currency", currency: "EUR", minimumFractionDigits: 0, maximumFractionDigits: 2 });
 const percent = new Intl.NumberFormat("en-IE", { maximumFractionDigits: 1 });
-const storageKey = "execfrontline-membership-roi-v4";
+const storageKey = "execfrontline-membership-roi-v5";
 const icons = {
   community: "⌂", sessions: "✦", briefings: "◉", course: "▤", networking: "◇",
   resources: "▧", sprint: "↗", sliders: "☷", reset: "↶", target: "◎", info: "ⓘ", close: "×",
@@ -747,8 +747,6 @@ function updateUI() {
     ? programmes === 0
       ? "2028 membership €1,200. Add one to four Programmes under Plan your annual use, at €1,200 each. Each includes a Sprint, a course and online events."
       : "2028 membership €1,200 plus " + (programmes === 1 ? "one Programme at €1,200" : programmes + " Programmes at €1,200 each") + ". Total annual cost " + money(result.cost) + "."
-    : state.plan === "circle"
-    ? "First membership year only. The €150 commitment fee is waived. Future renewal is intended to rise with inflation only."
     : state.plan === "founding"
     ? "Proposed 2027 fee. Your first year includes the entry Sprint; later seats depend on availability."
     : "Enter the full annual cost of your offer. Count a Sprint only if that offer includes it.";
@@ -817,7 +815,9 @@ syncInputs();
 
 byId("plan-options").addEventListener("change", (event) => {
   const scenario = selectedPreset(state);
+  const wasStandard = state.plan === "standard";
   state.plan = event.target.value;
+  if (state.plan === "standard" && !wasStandard) state.counts.programme = 1;
   if (scenario) applyPreset(state, scenario);
   else for (const { id } of benefits) if (!isAvailable(id, state)) state.counts[id] = 0;
   syncInputs();
