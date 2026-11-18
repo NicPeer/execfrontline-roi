@@ -255,13 +255,8 @@ dialog::backdrop { background: #003366b0; }
   .bar-track i { transition: none; }
 }
 
-.billing-field { margin-top: 14px; display: grid; gap: 5px; font-size: 12px; color: var(--muted); }
-.billing-field select { width: 100%; max-width: 100%; min-height: 44px; padding: 8px; border: 1px solid var(--border); border-radius: 7px; color: var(--ink); background: #f8fafc; font: inherit; }
+.billing-switch { margin-top: 14px; margin-bottom: 0; }
 .offer-note { color: #003366; font-size: 12px; margin-top: 12px; }
-.network-summary { display: grid; grid-template-columns: 1fr auto; gap: 3px 12px; padding: 14px; margin-top: 12px; border: 1px solid #c5dcf0; background: #eef6fc; border-radius: 10px; }
-.network-summary p { font-size: 13px; font-weight: 700; }
-.network-summary strong { color: var(--deep-teal); font-size: 17px; }
-.network-summary small { grid-column: 1 / -1; color: var(--muted); font-size: 11px; }
 .model-notes { border-top: 1px solid var(--border); padding-top: 16px; margin-top: 16px; }
 .model-notes h3 { font-size: 14px; margin-top: 12px; }
 .model-notes p { font-size: 12px; color: var(--muted); margin-top: 6px; max-width: 100ch; }
@@ -271,7 +266,6 @@ dialog::backdrop { background: #003366b0; }
  .plan-price { font-size: 21px; }
  .plan-name { font-size: 12px; }
  .plan-detail { font-size: 10px; }
- .billing-field select { font-size: 11px; }
 }
 
 .hero { position: relative; }
@@ -289,14 +283,14 @@ dialog::backdrop { background: #003366b0; }
 
 /* ExecFrontline brand: Montserrat for titles, names and numbers; Poppins for labels and body text */
 .brand, h1, h2, h3, .plan-name, .plan-price, .plan-price small, .benefit-name, .stepper input, .row-total,
-.roi-number, .comparison-label strong, .net-row strong, .mobile-summary strong, .network-summary strong,
+.roi-number, .comparison-label strong, .net-row strong, .mobile-summary strong,
 .footer-inner span:first-child, .assumption-field label { font-family: var(--heading); }
 h1, h2, .plan-price, .roi-number, .net-row strong, .brand, .footer-inner span:first-child { font-weight: 700; }
-h3, .plan-name, .benefit-name, .row-total, .comparison-label strong, .stepper input, .network-summary strong,
+h3, .plan-name, .benefit-name, .row-total, .comparison-label strong, .stepper input,
 .mobile-summary strong, .assumption-field label { font-weight: 600; }
 .plan-price small, .brand-light { font-weight: 500; }
 .eyebrow, .header-link, .text-button, .preset, .usage-columns, .live-marker, .primary-button, .preset-label,
-.method-foot a, .network-summary p, .custom-fee, .model-notes li strong, .preset-label { font-weight: 600; }
+.method-foot a, .custom-fee, .model-notes li strong, .preset-label { font-weight: 600; }
 .brand { letter-spacing: -.025em; }
 h1 { font-size: clamp(44px, 5.4vw, 78px); letter-spacing: -.03em; line-height: 1; }
 h2 { letter-spacing: -.02em; }
@@ -338,9 +332,12 @@ h1, h2, h3 { color: inherit; }
           <fieldset class="plan-options" id="plan-options">
             <legend class="sr-only">Membership rate</legend>
           </fieldset>
-          <div id="billing-field" class="billing-field">
-            <label for="billing">Founding Member payment schedule</label>
-            <select id="billing"><option value="annual">€900 paid annually · proposed</option><option value="quarterly">€400 each quarter · €1,600 over a full year · proposed</option></select>
+          <div id="billing-field" class="preset-wrap billing-switch">
+            <span class="preset-label" aria-hidden="true">Payment</span>
+            <div class="presets" role="group" aria-label="Payment schedule" id="billing-options">
+              <button type="button" class="preset" data-billing="annual" aria-pressed="true">Annual</button>
+              <button type="button" class="preset" data-billing="quarterly" aria-pressed="false">Quarterly</button>
+            </div>
           </div>
           <p class="offer-note" id="offer-note"></p>
           <div class="custom-fee" id="custom-fee-field" hidden>
@@ -403,7 +400,6 @@ h1, h2, h3 { color: inherit; }
           <div class="net-row"><span>Net annual value</span><strong id="net-total">—</strong></div>
           <div class="break-even"><span class="break-icon" data-icon="target" aria-hidden="true"></span><p id="break-even"></p></div>
         </section>
-        <div class="network-summary"><p>Value of vetted peer access</p><strong id="network-total">—</strong><small id="network-note">Included in the annual estimate.</small></div>
         <p class="estimate-note"><span data-icon="info" aria-hidden="true"></span>Use what you would realistically pay for a comparable benefit. Set the value to €0 if you would use a free alternative.</p>
       </aside>
 
@@ -445,7 +441,7 @@ h1, h2, h3 { color: inherit; }
             <li><strong>Archive result, €20 cautious or €40 standard:</strong> about 15 or 30 minutes saved at €80 an hour. Generic templates are cheap; the value lies in time saved on your own problem.</li>
           </ul>
           <h3>Membership model used</h3>
-          <p>The 2027 entry year includes one Sprint; later seats depend on availability. From 2028, membership includes one Programme with a Sprint, a course and online events. Members can add up to three more at €900 each. ExecFrontline PRO is included for Founding Members, with its contents still being defined, so it carries €0 in this model.</p>
+          <p>The 2027 entry year includes one Sprint; later seats depend on availability. Founding Member and 2028 membership can be paid annually or quarterly: €300 or €400 a quarter, which comes to €1,200 or €1,600 over a full year. Extra Programmes are priced per Programme. From 2028, membership includes one Programme with a Sprint, a course and online events. Members can add up to three more at €900 each. ExecFrontline PRO is included for Founding Members, with its contents still being defined, so it carries €0 in this model.</p>
           <p>Every benefit value here is an editable planning assumption. Task Force and event quantities depend on what is available. The 48-hour Challenge response is a target under validation. Other fees apply to a stated year. Member feedback on help received, time saved and outputs used will show how well these assumptions hold.</p>
         </div>
         <p class="method-foot">Illustrative value estimate, updated 18 November 2026. This compares the estimated value of benefits with membership cost. It excludes your time, possible contract wins and other uncertain outcomes. Future membership terms and availability may change. <a href="https://www.execfrontline.com/execfrontline-answer-hub">Explore what’s included <span class="arrow-up" aria-hidden="true"></span></a></p>
@@ -488,6 +484,7 @@ h1, h2, h3 { color: inherit; }
 (()=>{
 const MAX_MONEY = 100000;
 const EXTRA_PROGRAMME_FEE = 900; // one Programme is included in 2028 membership
+const QUARTERLY_FEE = { founding: 300, standard: 400 }; // per quarter, four quarters a year
 
 // Sprint belongs to 2027 entry offers; from 2028 it sits inside the Programme row.
 function isShown(id, state) {
@@ -600,7 +597,7 @@ function selectedValueSet(state) {
 }
 
 function calculate(state) {
-  const membershipCost = state.plan === "custom" ? state.customFee : state.plan === "founding" && state.billing === "quarterly" ? 1600 : plans[state.plan].fee;
+  const membershipCost = state.plan === "custom" ? state.customFee : state.billing === "quarterly" ? QUARTERLY_FEE[state.plan] * 4 : plans[state.plan].fee;
   const programmeCost = state.plan === "standard" ? Math.max(0, state.counts.programme - 1) * EXTRA_PROGRAMME_FEE : 0;
   const cost = membershipCost === null ? null : membershipCost + programmeCost;
   const amounts = Object.fromEntries(benefits.map(({ id }) => [id, (!isAvailable(id, state) ? 0 : state.counts[id]) * Math.round(state.rates[id] * 100)]));
@@ -623,7 +620,7 @@ const byId = (id) => document.getElementById(id);
 const query = (selector) => document.querySelector(selector);
 const euro = new Intl.NumberFormat("en-IE", { style: "currency", currency: "EUR", minimumFractionDigits: 0, maximumFractionDigits: 2 });
 const percent = new Intl.NumberFormat("en-IE", { maximumFractionDigits: 1 });
-const storageKey = "execfrontline-membership-roi-v6";
+const storageKey = "execfrontline-membership-roi-v7";
 const icons = {
   community: "⌂", sessions: "✦", briefings: "◉", course: "▤", networking: "◇",
   resources: "▧", sprint: "↗", sliders: "☷", reset: "↶", target: "◎", info: "ⓘ", close: "×",
@@ -668,16 +665,6 @@ function breakEvenText({ cost, net }) {
   if (net < 0) return "You’d need " + money(-net) + " more in annual value to cover the fee.";
   if (net === 0) return "You break even. Estimated annual value matches the fee.";
   return "You’re " + money(net) + " above your break-even point.";
-}
-
-function networkNote() {
-  const rate = state.rates.network;
-  const standard = valueSets.standard.rates.network;
-  const cautious = valueSets.cautious.rates.network;
-  if (state.counts.network === 0) return "Not included: access is set to 0 in the table above.";
-  if (rate === cautious) return "Included in the annual estimate at the cautious starting value of " + money(cautious) + " a year. The standard value is " + money(standard) + ". Change it under Edit values.";
-  if (rate === standard) return "Included in the annual estimate at the standard value of " + money(standard) + " a year. The cautious starting value is " + money(cautious) + ".";
-  return "Included in the annual estimate at your value of " + money(rate) + " a year. Starting values: " + money(cautious) + " cautious, " + money(standard) + " standard.";
 }
 
 function fillMarkup() {
@@ -740,7 +727,6 @@ function syncInputs() {
   clampCounts(state);
   query(`[name="plan"][value="${state.plan}"]`).checked = true;
   customFee.value = state.customFee ?? "";
-  byId("billing").value = state.billing;
   for (const { id } of benefits) {
     byId("count-" + id).value = state.counts[id];
     byId("rate-" + id).value = state.rates[id];
@@ -752,19 +738,29 @@ function updateUI() {
   const result = calculate(state);
   const scenario = selectedPreset(state);
   byId("custom-fee-field").hidden = state.plan !== "custom";
-  query('[name="plan"][value="founding"]').nextElementSibling.querySelector(".plan-price").textContent =
-    state.billing === "quarterly" ? "€1,600 / full year" : "€900 / year";
+  for (const key of ["founding", "standard"]) {
+    query(`[name="plan"][value="${key}"]`).nextElementSibling.querySelector(".plan-price").innerHTML = state.billing === "quarterly"
+      ? money(QUARTERLY_FEE[key]) + "<small> / quarter</small>"
+      : money(plans[key].fee) + "<small> / year</small>";
+  }
+  for (const button of document.querySelectorAll("[data-billing]")) {
+    button.setAttribute("aria-pressed", String(button.dataset.billing === state.billing));
+  }
+  const quarterly = state.billing === "quarterly" && state.plan !== "custom";
+  const membershipText = "Membership " + money(result.membershipCost ?? 0) + (quarterly ? " (4 × " + money(QUARTERLY_FEE[state.plan]) + ")" : "");
   query(".roi-caption").textContent = result.programmeCost > 0 ? "Estimated value compared with membership and Programme cost" : "Estimated value compared with membership fee";
-  byId("cost-detail").hidden = state.plan !== "standard";
+  byId("cost-detail").hidden = !(state.plan === "standard" || quarterly);
   const programmes = state.counts.programme;
-  byId("cost-detail").textContent = programmes <= 1
-    ? "Membership " + money(result.membershipCost ?? 0) + ", one Programme included."
-    : "Membership " + money(result.membershipCost ?? 0) + " incl. one Programme + " + (programmes - 1) + (programmes === 2 ? " extra Programme " : " extra Programmes ") + money(result.programmeCost);
-  byId("billing-field").hidden = state.plan !== "founding";
+  byId("cost-detail").textContent = state.plan !== "standard"
+    ? membershipText + ", paid quarterly."
+    : programmes <= 1
+    ? membershipText + ", one Programme included."
+    : membershipText + " incl. one Programme + " + (programmes - 1) + (programmes === 2 ? " extra Programme " : " extra Programmes ") + money(result.programmeCost);
+  byId("billing-field").hidden = state.plan === "custom";
   byId("offer-note").textContent = state.plan === "standard"
     ? programmes <= 1
-      ? "2028 membership €1,200, including one Programme with a Sprint, a course and online events. Add up to three more at €900 each under Plan your annual use."
-      : "2028 membership €1,200 including one Programme, plus " + (programmes === 2 ? "one extra Programme at €900" : (programmes - 1) + " extra Programmes at €900 each") + ". Total annual cost " + money(result.cost) + "."
+      ? "2028 membership " + money(result.membershipCost) + " a year, including one Programme with a Sprint, a course and online events. Add up to three more at €900 each under Plan your annual use."
+      : "2028 membership " + money(result.membershipCost) + " a year including one Programme, plus " + (programmes === 2 ? "one extra Programme at €900" : (programmes - 1) + " extra Programmes at €900 each") + ". Total annual cost " + money(result.cost) + "."
     : state.plan === "founding"
     ? "Proposed 2027 fee. Your first year includes the entry Sprint; later seats depend on availability."
     : "Enter the full annual cost of your offer. Count a Sprint only if that offer includes it.";
@@ -804,8 +800,6 @@ function updateUI() {
   byId("mobile-summary").dataset.tone = tone;
   byId("roi").textContent = formattedROI;
   byId("mobile-roi").textContent = formattedROI;
-  byId("network-total").textContent = money(result.amounts.network);
-  byId("network-note").textContent = networkNote();
   byId("value-total").textContent = money(value);
   byId("cost-total").textContent = cost === null ? "—" : money(cost);
   byId("net-total").textContent = net === null ? "—" : (net > 0 ? "+" : "") + money(net).replace("-", "−");
@@ -845,8 +839,10 @@ byId("plan-options").addEventListener("change", (event) => {
   updateUI();
 });
 
-byId("billing").addEventListener("change", (event) => {
-  state.billing = event.target.value;
+byId("billing-options").addEventListener("click", (event) => {
+  const button = event.target.closest("[data-billing]");
+  if (!button) return;
+  state.billing = button.dataset.billing;
   updateUI();
 });
 
