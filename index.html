@@ -427,21 +427,21 @@ h1, h2, h3 { color: inherit; }
         </div>
         <div class="model-notes">
           <h3>Standard and cautious values</h3>
-          <p>The calculator opens with cautious values and light use, so the first result is a conservative one. The cautious values lower the assumptions with the least market support: network access €300 a year, general webinars €25, archive results €10, and Task Force sessions €0 until you identify a specific benefit. The standard values are a more generous illustrative scenario. Sprint, Challenge and Programme values are the same in both. When estimated value falls short of the fee, the calculator shows a negative result.</p>
+          <p>The calculator opens with cautious values and light use, so the first result is a conservative one. The cautious starting values are network access €300 a year, Sprint €600, expert sessions and webinars €90, archive results €30, and Task Force sessions €0 until you identify a specific benefit. The standard values are an alternative illustrative scenario. Challenge and Programme values are the same in both. When estimated value falls short of the fee, the calculator shows a negative result.</p>
           <h3>What the peer network is worth to you</h3>
-          <p>The €600 standard value equals €50 a month. As an illustration, saving six hours a year in finding relevant expertise, at €100 an hour, would cover it. Use your own hours and hourly cost. The value depends on reaching relevant people who respond, share candid experience and connect you across companies and functions. Admission screening on its own adds little. Set access to €0 if you would not pay for it.</p>
+          <p>The €300 cautious value equals €25 a month, or three hours a year saved in finding relevant expertise at €100 an hour. The €600 standard value equals €50 a month, or six such hours. Use your own hours and hourly cost. The value depends on reaching relevant people who respond, share candid experience and connect you across companies and functions. Admission screening on its own adds little. Set access to €0 if you would not pay for it.</p>
           <p>The member mix is the practical reason. A supplier’s commercial director, a customer-side procurement lead and a sustainment manager can each show a different consequence of the same contractual decision. The €600 holds when you can reach those perspectives and use them.</p>
           <h3>Useful peer introductions</h3>
           <p>A useful introduction has three parts: a member connects you with someone who has relevant experience, you both agree to talk, and the conversation helps with a specific need. For example, an SME founder meets a procurement peer who explains a prime’s onboarding process, or a programme leader meets a sustainment specialist who has dealt with a similar supplier problem.</p>
           <p>Count one completed, relevant conversation per new connection. A directory entry, an accepted connection request or a repeat chat with the same person does not count. The starting value is €0 because network access already covers most of this benefit. Enter a value only for a distinct gain beyond access, such as the time or cost of finding the same help elsewhere. Commercial wins and revenue from a connection stay outside this estimate.</p>
           <h3>How the other starting values were set</h3>
           <ul>
-            <li><strong>Sprint, €900:</strong> nine hours of facilitated work on members’ own cases, or €100 an hour. That sits within published individual prices for specialist professional courses. Employer group packages can cost less per person.</li>
+            <li><strong>Sprint, €600 cautious or €900 standard:</strong> nine hours of facilitated work on members’ own cases, or about €67 and €100 an hour. The standard value sits within published individual prices for specialist professional courses. Employer group packages can cost less per person.</li>
             <li><strong>Programme, €1,200 each:</strong> the 2028 add-on price for a Sprint, a course and online events. Members from 2028 can add up to four a year. Each one adds €1,200 to your cost, so add only the Programmes you will follow.</li>
             <li><strong>Live Challenge, €150:</strong> at the lower end of published hourly rates for individual coaching. A peer response differs in scope from a contracted coach, so count it only when you receive a useful result.</li>
-            <li><strong>Task Force, €100 a session:</strong> count learning, feedback or a usable result you receive. Your own contribution to building a method is time you give, so it carries no value here.</li>
-            <li><strong>Expert session, €50:</strong> suits an interactive specialist session with room for questions. Use €25 or less for a general briefing or a recording.</li>
-            <li><strong>Archive result, €40:</strong> equals about thirty minutes saved at €80 an hour. Enter a lower value if a resource saves you less time.</li>
+            <li><strong>Task Force, €0 cautious or €100 standard a session:</strong> count learning, feedback or a usable result you receive. Your own contribution to building a method is time you give, so it carries no value here.</li>
+            <li><strong>Expert session, €90 cautious or €50 standard:</strong> the value depends on depth. An interactive specialist session or workshop with room for questions earns the higher figure. Use less for a general briefing or a recording.</li>
+            <li><strong>Archive result, €30 cautious or €40 standard:</strong> about thirty minutes saved at €60 or €80 an hour. Enter a lower value if a resource saves you less time.</li>
           </ul>
           <h3>Membership model used</h3>
           <p>The 2027 entry year includes one Sprint; later seats depend on availability, with Founding Circle priority. From 2028, members can add one to four Programmes a year at €1,200 each, on top of membership. Each includes a Sprint, a course and online events, and counts only when added. ExecFrontline PRO is included for the founding groups, with its contents still being defined, so it carries €0 in this model.</p>
@@ -526,7 +526,7 @@ const presets = {
 
 const valueSets = {
   standard: { name: "Standard", rates: { network: 600, sprint: 900, programme: 1200, challenges: 150, taskforces: 100, events: 50, resources: 40, introductions: 0 } },
-  cautious: { name: "Cautious", rates: { network: 300, sprint: 900, programme: 1200, challenges: 150, taskforces: 0, events: 25, resources: 10, introductions: 0 } },
+  cautious: { name: "Cautious", rates: { network: 300, sprint: 600, programme: 1200, challenges: 150, taskforces: 0, events: 90, resources: 30, introductions: 0 } },
 };
 
 function cleanNumber(input, max, decimals = 0) {
